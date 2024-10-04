@@ -12,6 +12,15 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+
+    "target": "es2016", 
+    "sourceMap": true,   
+    "removeComments": true,
+    "noEmitOnError": true,   
+    "forceConsistentCasingInFileNames": true, 
+    "noUnusedLocals": true,  
+    "noUnusedParameters": true, 
+    "noImplicitReturns": true, 
     "plugins": [
       {
         "name": "next"

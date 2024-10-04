@@ -1,101 +1,126 @@
-import Image from "next/image";
+import Head from "next/head";
+// import DarkModeToggle from "./component/DarkModeToggle";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <>
+      <Head>
+        <title>TypeScript Basics and Examples</title>
+        <meta
+          name="description"
+          content="Learn TypeScript Basics with practical examples and code snippets."
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+        {/* Navbar */}
+        <nav className="bg-gray-800 p-4 shadow-lg">
+          <div className="container mx-auto flex justify-between items-center">
+            <h1 className="text-white text-xl font-bold">
+              TypeScript Documentation
+            </h1>
+            {/* Dark Mode Toggle Component */}
+            {/* <DarkModeToggle /> */}
+          </div>
+        </nav>
+
+        {/* Content */}
+        <div className="container mx-auto p-6">
+          <h1 className="text-3xl font-bold mb-4">
+            TypeScript Basics and Examples
+          </h1>
+
+          {/* Section 1: Variables and Basic Types */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-2">
+              1. Variables and Basic Types
+            </h2>
+            <p className="mb-4">
+              TypeScript enforces types, making it easier to catch errors early.
+              You can declare variables with specific types like{" "}
+              <code>number</code>, <code>string</code>, etc.
+            </p>
+            <h4 className="text-xl font-semibold mb-2">Example:</h4>
+            <pre className="bg-gray-800 text-white p-4 rounded">
+              {`let age: number = 20;
+              
+if (age < 50) {
+  age += 10;
+  console.log(age); // Output: 30
+}`}
+            </pre>
+            <p className="mt-4">
+              In this example, the <code>age</code> variable is defined as a{" "}
+              <code>number</code>. We also have a simple condition that checks
+              the age and updates its value accordingly.
+            </p>
+          </section>
+
+          {/* Section 2: Enums */}
+          <section>
+            <h2 className="text-2xl font-semibold mt-6 mb-2">2. Enums</h2>
+            <p className="mb-4">
+              Enums allow us to define a set of named constants.
+              TypeScript&apos;s enums can be both numeric and string-based.
+            </p>
+            <h4 className="text-xl font-semibold mb-2">Example:</h4>
+            <pre className="bg-gray-800 text-white p-4 rounded">
+              {`const enum sizes {
+  small = 1 + 20, // Output: 21
+  medium,
+  large,
+}
+const mySize = sizes.medium;
+const yourSize = sizes.large;
+console.log(mySize, yourSize); // Output: 22 23`}
+            </pre>
+            <p className="mt-4">
+              Here, <code>sizes</code> is an enum with three sizes: small,
+              medium, and large, with automatic increment after the first value.
+            </p>
+          </section>
+
+          {/* More Sections */}
+          <section>
+            <h2 className="text-2xl font-semibold mt-6 mb-2">3. Functions</h2>
+            <p className="mb-4">
+              Functions in TypeScript can have return types, optional
+              parameters, and more.
+            </p>
+            <h4 className="text-xl font-semibold mb-2">Example 1:</h4>
+            <pre className="bg-gray-800 text-white p-4 rounded">
+              {`function incomeTax(income: number): number {
+  if (income > 50_000 && income < 75_000) {
+    return income * 1.15; // Tax applied
+  }
+  return income; // No tax applied
+}
+let income: number = 20_000;
+console.log(incomeTax(income)); // Output: 20000`}
+            </pre>
+
+            <h4 className="text-xl font-semibold mt-4 mb-2">
+              Example 2 (with Optional Parameters):
+            </h4>
+            <pre className="bg-gray-800 text-white p-4 rounded">
+              {`function incomeTax2(income: number, year?: number): number {
+  if (income > 50_000 && income < 75_000 && (year || 2022) >= 2024) {
+    return income * 1.15;
+  }
+  return income;
+}
+console.log(incomeTax2(20_000)); // Output: 20000`}
+            </pre>
+            <p className="mt-4">
+              Optional parameters, like <code>year?</code>, allow us to pass or
+              skip parameters while calling functions.
+            </p>
+          </section>
+
+          {/* Continue with other sections in a similar format */}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }
